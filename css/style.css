@@ -88,23 +88,23 @@ nav .nav-buttons .sign-up:hover {
   justify-content: space-between;
   align-items: center;
 }
-.header .header-content {
+.header-content {
   width: 40%;
 }
-.header .header-content p:first-child {
+.header-content p:first-child {
   font-family: Playfair Display;
   font-weight: bold;
   font-size: 86px;
   line-height: 88px;
 }
-.header .header-content p:nth-child(2) {
+.header-content p:nth-child(2) {
   color: #9893a3;
   font-size: 15px;
   line-height: 30px;
   font-weight: 200;
   margin-top: 20px;
 }
-.header .header-content button {
+.header-content button {
   width: 100px;
   height: 35px;
   border: 1px solid #6c63ff;
@@ -115,12 +115,12 @@ nav .nav-buttons .sign-up:hover {
   transition: all ease-in-out 0.3s;
   margin-top: 40px;
 }
-.header .header-content button:hover {
+.header-content button:hover {
   background: #fff;
   color: #6c63ff;
   border-color: #6c63ff;
 }
-.header .header-img {
+.header-img {
   width: 50%;
 }
 
@@ -148,16 +148,16 @@ nav .nav-buttons .sign-up:hover {
 .feature-section .feature img {
   width: 50%;
 }
-.feature-section .feature .feature-content {
+.feature-section .feature-content {
   width: 40%;
 }
-.feature-section .feature .feature-content p:first-child {
+.feature-section .feature-content p:first-child {
   font-family: Playfair Display;
   font-weight: bold;
   font-size: 46px;
   line-height: 60px;
 }
-.feature-section .feature .feature-content p:nth-child(2) {
+.feature-section .feature-content p:nth-child(2) {
   color: #9893a3;
   font-size: 15px;
   line-height: 30px;
@@ -165,12 +165,12 @@ nav .nav-buttons .sign-up:hover {
   margin-top: 20px;
   margin-bottom: 50px;
 }
-.feature-section .feature .feature-content a:last-child {
+.feature-section .feature-content a:last-child {
   font-size: 15px;
   position: relative;
   font-weight: 500;
 }
-.feature-section .feature .feature-content a:last-child::after {
+.feature-section .feature-content a:last-child::after {
   content: "";
   position: absolute;
   width: 110%;
@@ -198,7 +198,7 @@ nav .nav-buttons .sign-up:hover {
   align-items: center;
   margin-top: 80px;
 }
-.pricing-section .pricing .pricing-container {
+.pricing-section .pricing-container {
   text-align: center;
   width: 28%;
   height: 420px;
@@ -211,23 +211,23 @@ nav .nav-buttons .sign-up:hover {
   border-radius: 4px;
   transition: height ease-in-out 0.4s;
 }
-.pricing-section .pricing .pricing-container .price {
+.pricing-section .pricing-container .price {
   color: #000;
   font-size: 45px;
   font-weight: 700;
   margin-top: 30px;
 }
-.pricing-section .pricing .pricing-container span {
+.pricing-section .pricing-container span {
   font-size: 15px;
   font-weight: 200;
 }
-.pricing-section .pricing .pricing-container .price-features {
+.pricing-section .pricing-container .price-features {
   margin-top: 40px;
 }
-.pricing-section .pricing .pricing-container .price-features p:not(:first-child) {
+.pricing-section .pricing-container .price-features p:not(:first-child) {
   margin-top: 20px;
 }
-.pricing-section .pricing .pricing-container button {
+.pricing-section .pricing-container button {
   width: 100px;
   height: 35px;
   border: 1px solid #6c63ff;
@@ -241,16 +241,16 @@ nav .nav-buttons .sign-up:hover {
   border-color: #6c63ff;
   margin-top: 50px;
 }
-.pricing-section .pricing .pricing-container:hover {
+.pricing-section .pricing-container:hover {
   height: 480px;
   color: #fff;
   background: #6c63ff;
   cursor: pointer;
 }
-.pricing-section .pricing .pricing-container:hover .price {
+.pricing-section .pricing-container:hover .price {
   color: #fff;
 }
-.pricing-section .pricing .pricing-container:hover button {
+.pricing-section .pricing-container:hover button {
   background: #fff;
   color: #6c63ff;
   border-color: #6c63ff;
@@ -297,13 +297,13 @@ nav .nav-buttons .sign-up:hover {
 .blog-section .blogs .blog img {
   width: 100%;
 }
-.blog-section .blogs .blog .blog-title {
+.blog-section .blogs .blog-title {
   font-weight: 600;
   font-size: 18px;
   line-height: 30px;
   margin-top: 20px;
 }
-.blog-section .blogs .blog .blog-description {
+.blog-section .blogs .blog-description {
   color: #9893a3;
   font-size: 13px;
   font-weight: 100;
