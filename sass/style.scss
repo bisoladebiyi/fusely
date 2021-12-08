@@ -2,8 +2,11 @@
 // variables
 $color-primary: #6c63ff;
 $color-neutral: #9893a3;
-$color-white: #fff;
 $color-primary-light: rgba(197, 194, 255, 0.5);
+$color-dark: #2f2e41;
+
+
+$width: 86%;
 
 // mixins
 @mixin pseudo {
@@ -17,15 +20,20 @@ $color-primary-light: rgba(197, 194, 255, 0.5);
   left: 0;
   transition: width ease-in-out 0.3s;
 }
-@mixin pseudo2 {
+@mixin linkPseudo {
+  font-size: 15px;
+  position: relative;
+  font-weight: 500;
+  &::after {
     content: "";
-  position: absolute;
-  width: 110%;
-  height: 9px;
-  left: -4px;
-  bottom: 0;
-  background: $color-primary-light;
-  z-index: -2;
+    position: absolute;
+    width: 110%;
+    height: 9px;
+    left: -4px;
+    bottom: 0;
+    background: $color-primary-light;
+    z-index: -2;
+  }
 }
 @mixin btnHover($col1, $col2, $col3) {
   background: $col1;
@@ -53,17 +61,11 @@ $color-primary-light: rgba(197, 194, 255, 0.5);
   transition: all ease-in-out 0.3s;
 }
 @mixin font {
-    font-family: Playfair Display;
-    font-weight: bold;
-    font-size: 46px;
-    line-height: 60px;
+  font-family: Playfair Display;
+  font-weight: bold;
+  font-size: 46px;
+  line-height: 60px;
 }
-
-
-
-
-
-
 
 * {
   padding: 0;
@@ -73,9 +75,10 @@ $color-primary-light: rgba(197, 194, 255, 0.5);
 }
 body {
   font-family: Open Sans;
+  color: $color-dark;
 }
 a {
-  color: #000;
+  color: $color-dark;
 }
 
 nav {
@@ -108,14 +111,14 @@ nav {
       @include btn-style1;
 
       &:hover {
-        @include btnHover($color-primary, $color-white, $color-primary);
+        @include btnHover($color-primary, #fff, $color-primary);
       }
     }
     .sign-up {
       @include btn-style2;
       margin-left: 16px;
       &:hover {
-        @include btnHover($color-white, $color-primary, $color-primary);
+        @include btnHover(#fff, $color-primary, $color-primary);
       }
     }
   }
@@ -124,7 +127,7 @@ nav {
 // header
 .header {
   display: flex;
-  width: 86%;
+  width: $width;
   margin: 80px auto 0;
   justify-content: space-between;
   align-items: center;
@@ -147,7 +150,7 @@ nav {
     button {
       @include btn-style2;
       &:hover {
-        @include btnHover($color-white, $color-primary, $color-primary);
+        @include btnHover(#fff, $color-primary, $color-primary);
       }
       margin-top: 40px;
     }
@@ -175,7 +178,7 @@ nav {
   margin-top: 200px;
   .feature {
     display: flex;
-    width: 86%;
+    width: $width;
     margin: 80px auto 200px;
     justify-content: space-between;
     align-items: center;
@@ -195,83 +198,204 @@ nav {
         margin-top: 20px;
         margin-bottom: 50px;
       }
-      a:last-child  {
+      a:last-child {
+        @include linkPseudo;
+      }
+    }
+  }
+}
+
+// pricing section
+.pricing-section {
+  text-align: center;
+  width: $width;
+  margin: 0 auto 200px;
+  .pricing-heading {
+    @include font;
+  }
+
+  .pricing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 80px;
+    .pricing-container {
+      text-align: center;
+      width: 28%;
+      height: 420px;
+      background: #ecebff4d;
+      color: $color-neutral;
+      font-weight: 200;
+      font-size: 15px;
+      display: grid;
+      place-items: center;
+      border-radius: 4px;
+      transition: height ease-in-out 0.4s;
+
+      .price {
+        color: #000;
+        font-size: 45px;
+        font-weight: 700;
+        margin-top: 30px;
+      }
+      span {
         font-size: 15px;
-        position: relative;
-        font-weight: 500;
-        &::after {
-            @include pseudo2;
-        
+        font-weight: 200;
+      }
+      .price-features {
+        margin-top: 40px;
+        p:not(:first-child) {
+          margin-top: 20px;
+        }
+      }
+      button {
+        @include btn-style2;
+        @include btnHover(transparent, $color-primary, $color-primary);
+        margin-top: 50px;
+      }
+      &:hover {
+        height: 480px;
+        color: #fff;
+        background: $color-primary;
+        cursor: pointer;
+        .price {
+          color: #fff;
+        }
+        button {
+          @include btnHover(#fff, $color-primary, $color-primary);
         }
       }
     }
   }
 }
 
-// pricing section 
-.pricing-section{
-    text-align: center; 
-    width: 86%;
-    margin: 0 auto 200px;
-    .pricing-heading{
-        @include font;
+// blogs
+.blog-section {
+  width: $width;
+  margin: 0 auto;
+  .blog-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    p {
+      @include font;
     }
-   
-    .pricing{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 80px;
-        .pricing-container {
-            text-align: center;
-            width: 28%;
-            height: 420px;
-            background: #ECEBFF4D;
-            color: $color-neutral;
-            font-weight: 200;
-            font-size: 15px;
-            display: grid;
-            place-items: center;
-            border-radius: 4px;
-            transition: all ease-in-out .2s;
-          
-            .price{
-                color: #000;
-                font-size: 45px;
-                font-weight: 700;
-                margin-top: 30px;
-            }
-            span{
-                font-size: 15px;
-                font-weight: 200;
-            }
-            .price-features {
-                margin-top: 40px;
-                p:not(:first-child){
-                    margin-top: 20px
-                }
-            } 
-            button{
-                @include btn-style2;
-                @include btnHover(transparent, $color-primary, $color-primary);
-                margin-top: 50px;
-            }
-            &:hover{
-                height: 480px;
-                color: #fff;
-                background: $color-primary;
-                cursor: pointer;
-                .price{
-                    color: #fff;
-                }
-                button{
-                    @include btnHover($color-white, $color-primary, $color-primary);         
-                }
-            }
-      
-          }
+    button {
+      @include btn-style1;
+      &:hover {
+        @include btnHover($color-primary, #fff, $color-primary);
+      }
+    }
+  }
+  .blogs {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 70px;
+    .blog {
+      width: 28%;
+      img {
+        width: 100%;
+      }
+      .blog-title {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 30px;
+        margin-top: 20px;
+      }
+      .blog-description {
+        color: $color-neutral;
+        font-size: 13px;
+        font-weight: 100;
+        line-height: 25px;
+        margin: 10px 0 30px;
+      }
+      a {
+        @include linkPseudo;
+      }
+    }
+  }
+}
 
+// footer
+footer {
+  background: $color-primary-light;
+  margin-top: 350px;
+  padding: 250px 0 150px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    margin: 0 auto;
+    div {
+      .footer-links-heading {
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 24px;
+        margin-bottom: 15px;
+      }
+      ul {
+        color: $color-neutral;
+        font-size: 14px;
+        font-weight: 300;
+       
+        li:not(:first-child){
+            margin-top: 10px;
+        }
+      }
+     
     }
+  }
+  .rights{
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      img{
+          width: 70px;
+          padding-left: 40px;
+      }
+      p{
+          color: $color-neutral;
+          font-size: 13px;
+          padding-right: 40px;
+      }
     
-    
+  }
+  .contact{
+      width: 60%;
+      background: $color-dark;
+      border-radius: 3px;
+      height: 270px;
+      position: absolute;
+      top: calc(270/2) * -1px;
+      margin: 0 auto;
+      display: grid;
+      place-items: center;
+      div{
+          width: 80%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          p {
+              @include font;
+              width: 60%;
+              font-size: 40px;
+              line-height: 50px;
+              color: #fff;
+          }
+          button{
+              @include btn-style2;
+              width: 140px;
+              &:hover{
+                  @include btnHover(transparent, #fff, $color-primary);
+              }
+          }
+      }
+  }
 }
