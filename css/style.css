@@ -1,0 +1,258 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  font-family: Open Sans;
+}
+
+a {
+  color: #000;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+nav .nav-links {
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+}
+nav .nav-links li {
+  position: relative;
+}
+nav .nav-links li:not(:first-child) {
+  margin-left: 20px;
+}
+nav .nav-links li:not(:first-child) a {
+  color: #9893a3;
+}
+nav .nav-links li::after {
+  content: "";
+  background: #6c63ff;
+  width: 0%;
+  height: 3px;
+  border-radius: 4px;
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  transition: width ease-in-out 0.3s;
+}
+nav .nav-links li:hover::after {
+  width: 100%;
+}
+nav .nav-buttons .log-in {
+  width: 75px;
+  height: 35px;
+  border: 1px solid #6c63ff;
+  background: #fff;
+  border-radius: 2px;
+  color: #6c63ff;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+}
+nav .nav-buttons .log-in:hover {
+  background: #6c63ff;
+  color: #fff;
+  border-color: #6c63ff;
+}
+nav .nav-buttons .sign-up {
+  width: 100px;
+  height: 35px;
+  border: 1px solid #6c63ff;
+  color: #fff;
+  border-radius: 2px;
+  background: #6c63ff;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+  margin-left: 16px;
+}
+nav .nav-buttons .sign-up:hover {
+  background: #fff;
+  color: #6c63ff;
+  border-color: #6c63ff;
+}
+
+.header {
+  display: flex;
+  width: 86%;
+  margin: 80px auto 0;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .header-content {
+  width: 40%;
+}
+.header .header-content p:first-child {
+  font-family: Playfair Display;
+  font-weight: bold;
+  font-size: 86px;
+  line-height: 88px;
+}
+.header .header-content p:nth-child(2) {
+  color: #9893a3;
+  font-size: 15px;
+  line-height: 30px;
+  font-weight: 200;
+  margin-top: 20px;
+}
+.header .header-content button {
+  width: 100px;
+  height: 35px;
+  border: 1px solid #6c63ff;
+  color: #fff;
+  border-radius: 2px;
+  background: #6c63ff;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+  margin-top: 40px;
+}
+.header .header-content button:hover {
+  background: #fff;
+  color: #6c63ff;
+  border-color: #6c63ff;
+}
+.header .header-img {
+  width: 50%;
+}
+
+.partners {
+  width: 60%;
+  margin: 100px auto 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  place-items: center;
+}
+.partners img {
+  width: 80px;
+}
+
+.feature-section {
+  margin-top: 200px;
+}
+.feature-section .feature {
+  display: flex;
+  width: 86%;
+  margin: 80px auto 200px;
+  justify-content: space-between;
+  align-items: center;
+}
+.feature-section .feature img {
+  width: 50%;
+}
+.feature-section .feature .feature-content {
+  width: 40%;
+}
+.feature-section .feature .feature-content p:first-child {
+  font-family: Playfair Display;
+  font-weight: bold;
+  font-size: 46px;
+  line-height: 60px;
+}
+.feature-section .feature .feature-content p:nth-child(2) {
+  color: #9893a3;
+  font-size: 15px;
+  line-height: 30px;
+  font-weight: 200;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+.feature-section .feature .feature-content a:last-child {
+  font-size: 15px;
+  position: relative;
+  font-weight: 500;
+}
+.feature-section .feature .feature-content a:last-child::after {
+  content: "";
+  position: absolute;
+  width: 110%;
+  height: 9px;
+  left: -4px;
+  bottom: 0;
+  background: rgba(197, 194, 255, 0.5);
+  z-index: -2;
+}
+
+.pricing-section {
+  text-align: center;
+  width: 86%;
+  margin: 0 auto 200px;
+}
+.pricing-section .pricing-heading {
+  font-family: Playfair Display;
+  font-weight: bold;
+  font-size: 46px;
+  line-height: 60px;
+}
+.pricing-section .pricing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 80px;
+}
+.pricing-section .pricing .pricing-container {
+  text-align: center;
+  width: 28%;
+  height: 420px;
+  background: #ECEBFF4D;
+  color: #9893a3;
+  font-weight: 200;
+  font-size: 15px;
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  transition: all ease-in-out 0.2s;
+}
+.pricing-section .pricing .pricing-container .price {
+  color: #000;
+  font-size: 45px;
+  font-weight: 700;
+  margin-top: 30px;
+}
+.pricing-section .pricing .pricing-container span {
+  font-size: 15px;
+  font-weight: 200;
+}
+.pricing-section .pricing .pricing-container .price-features {
+  margin-top: 40px;
+}
+.pricing-section .pricing .pricing-container .price-features p:not(:first-child) {
+  margin-top: 20px;
+}
+.pricing-section .pricing .pricing-container button {
+  width: 100px;
+  height: 35px;
+  border: 1px solid #6c63ff;
+  color: #fff;
+  border-radius: 2px;
+  background: #6c63ff;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+  background: transparent;
+  color: #6c63ff;
+  border-color: #6c63ff;
+  margin-top: 50px;
+}
+.pricing-section .pricing .pricing-container:hover {
+  height: 480px;
+  color: #fff;
+  background: #6c63ff;
+  cursor: pointer;
+}
+.pricing-section .pricing .pricing-container:hover .price {
+  color: #fff;
+}
+.pricing-section .pricing .pricing-container:hover button {
+  background: #fff;
+  color: #6c63ff;
+  border-color: #6c63ff;
+}
+
+/*# sourceMappingURL=style.css.map */

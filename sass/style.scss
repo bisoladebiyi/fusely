@@ -1,0 +1,277 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
+// variables
+$color-primary: #6c63ff;
+$color-neutral: #9893a3;
+$color-white: #fff;
+$color-primary-light: rgba(197, 194, 255, 0.5);
+
+// mixins
+@mixin pseudo {
+  content: "";
+  background: $color-primary;
+  width: 0%;
+  height: 3px;
+  border-radius: 4px;
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  transition: width ease-in-out 0.3s;
+}
+@mixin pseudo2 {
+    content: "";
+  position: absolute;
+  width: 110%;
+  height: 9px;
+  left: -4px;
+  bottom: 0;
+  background: $color-primary-light;
+  z-index: -2;
+}
+@mixin btnHover($col1, $col2, $col3) {
+  background: $col1;
+  color: $col2;
+  border-color: $col3;
+}
+@mixin btn-style1 {
+  width: 75px;
+  height: 35px;
+  border: 1px solid $color-primary;
+  background: #fff;
+  border-radius: 2px;
+  color: $color-primary;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+}
+@mixin btn-style2 {
+  width: 100px;
+  height: 35px;
+  border: 1px solid $color-primary;
+  color: #fff;
+  border-radius: 2px;
+  background: $color-primary;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+}
+@mixin font {
+    font-family: Playfair Display;
+    font-weight: bold;
+    font-size: 46px;
+    line-height: 60px;
+}
+
+
+
+
+
+
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+body {
+  font-family: Open Sans;
+}
+a {
+  color: #000;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  .nav-links {
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    li {
+      position: relative;
+      &:not(:first-child) {
+        margin-left: 20px;
+        a {
+          color: $color-neutral;
+        }
+      }
+      &::after {
+        @include pseudo;
+      }
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+  .nav-buttons {
+    .log-in {
+      @include btn-style1;
+
+      &:hover {
+        @include btnHover($color-primary, $color-white, $color-primary);
+      }
+    }
+    .sign-up {
+      @include btn-style2;
+      margin-left: 16px;
+      &:hover {
+        @include btnHover($color-white, $color-primary, $color-primary);
+      }
+    }
+  }
+}
+
+// header
+.header {
+  display: flex;
+  width: 86%;
+  margin: 80px auto 0;
+  justify-content: space-between;
+  align-items: center;
+
+  .header-content {
+    width: 40%;
+    p:first-child {
+      font-family: Playfair Display;
+      font-weight: bold;
+      font-size: 86px;
+      line-height: 88px;
+    }
+    p:nth-child(2) {
+      color: $color-neutral;
+      font-size: 15px;
+      line-height: 30px;
+      font-weight: 200;
+      margin-top: 20px;
+    }
+    button {
+      @include btn-style2;
+      &:hover {
+        @include btnHover($color-white, $color-primary, $color-primary);
+      }
+      margin-top: 40px;
+    }
+  }
+  .header-img {
+    width: 50%;
+  }
+}
+
+// main body
+
+.partners {
+  width: 60%;
+  margin: 100px auto 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  place-items: center;
+  img {
+    width: 80px;
+  }
+}
+
+// feature section
+.feature-section {
+  margin-top: 200px;
+  .feature {
+    display: flex;
+    width: 86%;
+    margin: 80px auto 200px;
+    justify-content: space-between;
+    align-items: center;
+    img {
+      width: 50%;
+    }
+    .feature-content {
+      width: 40%;
+      p:first-child {
+        @include font;
+      }
+      p:nth-child(2) {
+        color: $color-neutral;
+        font-size: 15px;
+        line-height: 30px;
+        font-weight: 200;
+        margin-top: 20px;
+        margin-bottom: 50px;
+      }
+      a:last-child  {
+        font-size: 15px;
+        position: relative;
+        font-weight: 500;
+        &::after {
+            @include pseudo2;
+        
+        }
+      }
+    }
+  }
+}
+
+// pricing section 
+.pricing-section{
+    text-align: center; 
+    width: 86%;
+    margin: 0 auto 200px;
+    .pricing-heading{
+        @include font;
+    }
+   
+    .pricing{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 80px;
+        .pricing-container {
+            text-align: center;
+            width: 28%;
+            height: 420px;
+            background: #ECEBFF4D;
+            color: $color-neutral;
+            font-weight: 200;
+            font-size: 15px;
+            display: grid;
+            place-items: center;
+            border-radius: 4px;
+            transition: all ease-in-out .2s;
+          
+            .price{
+                color: #000;
+                font-size: 45px;
+                font-weight: 700;
+                margin-top: 30px;
+            }
+            span{
+                font-size: 15px;
+                font-weight: 200;
+            }
+            .price-features {
+                margin-top: 40px;
+                p:not(:first-child){
+                    margin-top: 20px
+                }
+            } 
+            button{
+                @include btn-style2;
+                @include btnHover(transparent, $color-primary, $color-primary);
+                margin-top: 50px;
+            }
+            &:hover{
+                height: 480px;
+                color: #fff;
+                background: $color-primary;
+                cursor: pointer;
+                .price{
+                    color: #fff;
+                }
+                button{
+                    @include btnHover($color-white, $color-primary, $color-primary);         
+                }
+            }
+      
+          }
+
+    }
+    
+    
+}
