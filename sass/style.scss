@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
 @import "./abstracts/mixins";
 
-
 // variables
 $color-primary: #6c63ff;
 $color-neutral: #9893a3;
@@ -9,16 +8,20 @@ $color-primary-light: rgba(197, 194, 255, 0.5);
 $color-dark: #2f2e41;
 $width: 86%;
 
-
 * {
   padding: 0;
   margin: 0;
   list-style: none;
   text-decoration: none;
 }
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: Open Sans;
   color: $color-dark;
+  position: relative;
+  overflow-x: hidden;
 }
 a {
   color: $color-dark;
@@ -29,10 +32,25 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 20px 40px;
+  background: #fff;
+  @include respond(tab-port) {
+    padding: 20px 25px;
+  }
+  img {
+    @include respond(tab-port) {
+      width: 70px;
+    }
+  }
   .nav-links {
     font-size: 14px;
     font-weight: 500;
     display: flex;
+    @include respond(desktop) {
+      font-size: 13px;
+    }
+    @include respond(tab-land) {
+      display: none;
+    }
     li {
       position: relative;
       &:not(:first-child) {
@@ -64,6 +82,22 @@ nav {
         @include btnHover(#fff, $color-primary, $color-primary);
       }
     }
+    @include respond(tab-land) {
+      display: none;
+    }
+  }
+  .hamburger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
+    @include respond(tab-land) {
+      display: flex;
+      width: 25px;
+      img {
+        width: 100%;
+      }
+    }
   }
 }
 
@@ -74,14 +108,32 @@ nav {
   margin: 80px auto 0;
   justify-content: space-between;
   align-items: center;
+  @include respond(tab-land) {
+    display: block;
+    margin-top: 130px;
+  }
 
   &-content {
     width: 40%;
+    @include respond(tab-land) {
+      width: 80%;
+    }
     p:first-child {
       font-family: Playfair Display;
       font-weight: bold;
       font-size: 86px;
       line-height: 88px;
+      @include respond(desktop) {
+        font-size: 70px;
+      }
+      @include respond(tab-port) {
+        font-size: 60px;
+        line-height: 70px;
+      }
+      @include respond(mobile) {
+        font-size: 45px;
+        line-height: 60px;
+      }
     }
     p:nth-child(2) {
       color: $color-neutral;
@@ -89,6 +141,10 @@ nav {
       line-height: 30px;
       font-weight: 200;
       margin-top: 20px;
+      @include respond(mobile) {
+        font-size: 14px;
+        line-height: 25px;
+      }
     }
     button {
       @include btn-style2;
@@ -99,6 +155,9 @@ nav {
     }
   }
   &-img {
+    @include respond(tab-land) {
+      display: none;
+    }
     width: 50%;
   }
 }
@@ -111,27 +170,74 @@ nav {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   place-items: center;
+  @include respond(desktop) {
+    width: 65%;
+  }
+  @include respond(tab-land) {
+    width: 75%;
+  }
+  @include respond(tab-port) {
+    width: 80%;
+  }
+  @include respond(mobile) {
+    display: none;
+  }
+
   img {
     width: 80px;
+    @include respond(tab-land) {
+      width: 60px;
+    }
+    @include respond(tab-port) {
+      width: 50px;
+    }
   }
 }
 
 // feature section
 .feature-section {
   margin-top: 200px;
+  @include respond(tab-port) {
+    margin-top: 150px;
+  }
   .feature {
     display: flex;
     width: $width;
     margin: 80px auto 200px;
     justify-content: space-between;
     align-items: center;
+    @include respond(tab-port) {
+      flex-direction: column;
+      margin-bottom: 100px;
+    }
     img {
       width: 50%;
+      @include respond(tab-port) {
+        width: 60%;
+        text-align: center;
+        margin-top: 30px;
+      }
+      @include respond(mobile) {
+        width: 80%;
+      }
     }
     &-content {
       width: 40%;
+      @include respond(tab-land) {
+        width: 100%;
+      }
       p:first-child {
         @include font;
+        @include respond(tab-land) {
+          font-size: 36px;
+        }
+        @include respond(tab-port) {
+          font-size: 30px;
+        }
+        @include respond(mobile) {
+          font-size: 26px;
+          line-height: 40px;
+        }
       }
       p:nth-child(2) {
         color: $color-neutral;
@@ -140,9 +246,24 @@ nav {
         font-weight: 200;
         margin-top: 20px;
         margin-bottom: 50px;
+        @include respond(tab-land) {
+          margin: 10px 0 20px;
+          line-height: 25px;
+        }
+        @include respond(tab-port) {
+          font-size: 13px;
+          line-height: 25px;
+          margin: 0 0 10px;
+        }
+        @include respond(mobile) {
+          font-size: 12px;
+        }
       }
       a:last-child {
         @include linkPseudo;
+        @include respond(mobile) {
+          font-size: 12px;
+        }
       }
     }
   }
@@ -155,6 +276,16 @@ nav {
   margin: 0 auto 200px;
   .pricing-heading {
     @include font;
+    @include respond(tab-land) {
+      font-size: 36px;
+    }
+    @include respond(tab-port) {
+      font-size: 30px;
+    }
+    @include respond(mobile) {
+      font-size: 26px;
+      line-height: 40px;
+    }
   }
 
   .pricing {
@@ -162,6 +293,10 @@ nav {
     justify-content: space-between;
     align-items: center;
     margin-top: 80px;
+    @include respond(tab-land) {
+      margin-top: 30px;
+      flex-direction: column;
+    }
     &-container {
       text-align: center;
       width: 28%;
@@ -174,12 +309,42 @@ nav {
       place-items: center;
       border-radius: 4px;
       transition: height ease-in-out 0.4s;
+      @include respond(desktop) {
+        font-size: 13px;
+      }
+
+      @include respond(tab-land) {
+        width: 100%;
+        height: 300px;
+        padding: 40px 0;
+        &:not(:first-child) {
+          margin-top: 40px;
+        }
+      }
+      @include respond(tab-port) {
+        height: 280px;
+      }
+      @include respond(mobile) {
+        font-size: 12px;
+      }
 
       .price {
         color: #000;
         font-size: 45px;
         font-weight: 700;
         margin-top: 30px;
+        @include respond(desktop) {
+          font-size: 38px;
+        }
+        @include respond(tab-land) {
+          font-size: 34px;
+        }
+        @include respond(tab-port) {
+          font-size: 30px;
+        }
+        @include respond(mobile) {
+          font-size: 25px;
+        }
       }
       span {
         font-size: 15px;
@@ -187,8 +352,16 @@ nav {
       }
       .price-features {
         margin-top: 40px;
+        @include respond(tab-land) {
+          margin-top: 20px;
+        }
         p:not(:first-child) {
           margin-top: 20px;
+        }
+        @include respond(tab-port) {
+          p:not(:first-child) {
+            margin-top: 15px;
+          }
         }
       }
       button {
@@ -201,6 +374,12 @@ nav {
         color: #fff;
         background: $color-primary;
         cursor: pointer;
+        @include respond(tab-land) {
+          height: 320px;
+        }
+        @include respond(tab-port) {
+          height: 300px;
+        }
         .price {
           color: #fff;
         }
@@ -222,6 +401,15 @@ nav {
     align-items: center;
     p {
       @include font;
+      @include respond(tab-land) {
+        font-size: 36px;
+      }
+      @include respond(tab-port) {
+        font-size: 30px;
+      }
+      @include respond(mobile) {
+        font-size: 22px;
+      }
     }
     button {
       @include btn-style1;
@@ -234,16 +422,56 @@ nav {
     display: flex;
     justify-content: space-between;
     margin-top: 70px;
+    @include respond(tab-land) {
+      display: block;
+      margin-top: 40px;
+    }
     .blog {
       width: 28%;
+      @include respond(tab-land) {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        &:not(:first-child) {
+          margin-top: 30px;
+        }
+      }
+      @include respond(tab-port) {
+        display: block;
+      }
+      @include respond(mobile) {
+        &:not(:first-child) {
+          margin-top: 40px;
+        }
+      }
       img {
         width: 100%;
+        @include respond(tab-land) {
+          width: 45%;
+        }
+        @include respond(tab-port) {
+          width: 100%;
+        }
+      }
+      div {
+        @include respond(tab-land) {
+          width: 50%;
+        }
+        @include respond(tab-port) {
+          width: 100%;
+        }
       }
       &-title {
         font-weight: 600;
         font-size: 18px;
-        line-height: 30px;
+        line-height: 25px;
         margin-top: 20px;
+        @include respond(desktop) {
+          font-size: 17px;
+        }
+        @include respond(mobile) {
+          font-size: 15px;
+        }
       }
       &-description {
         color: $color-neutral;
@@ -251,9 +479,16 @@ nav {
         font-weight: 100;
         line-height: 25px;
         margin: 10px 0 30px;
+        @include respond(mobile) {
+          margin: 5px 0 15px;
+          line-height: 23px;
+        }
       }
       a {
         @include linkPseudo;
+        @include respond(mobile) {
+          font-size: 12px;
+        }
       }
     }
   }
@@ -267,78 +502,220 @@ footer {
   position: relative;
   display: flex;
   justify-content: center;
+  @include respond(tab-land) {
+    padding-top: 200px;
+  }
   .footer-content {
     display: flex;
     justify-content: space-between;
     width: 60%;
     margin: 0 auto;
+    @include respond(desktop) {
+      width: 65%;
+    }
+    @include respond(tab-land) {
+      width: 75%;
+    }
+    @include respond(tab-port) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-row-gap: 20px;
+    }
     div {
       .footer-links-heading {
         font-weight: 600;
         font-size: 15px;
         line-height: 24px;
         margin-bottom: 15px;
+        @include respond(tab-land) {
+          font-size: 13px;
+        }
       }
       ul {
         color: $color-neutral;
         font-size: 14px;
         font-weight: 300;
-       
-        li:not(:first-child){
-            margin-top: 10px;
+        @include respond(tab-land) {
+          font-size: 13px;
+        }
+
+        li:not(:first-child) {
+          margin-top: 10px;
         }
       }
-     
+      img {
+        @include respond(tab-land) {
+          width: 25px;
+        }
+      }
     }
   }
-  .rights{
-      width: 100%;
-      position: absolute;
-      bottom: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 20px;
-      img{
-          width: 70px;
-          padding-left: 40px;
+  .rights {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    img {
+      width: 70px;
+      padding-left: 40px;
+      @include respond(tab-land) {
+        width: 50px;
       }
-      p{
-          color: $color-neutral;
-          font-size: 13px;
-          padding-right: 40px;
+      @include respond(mobile) {
+        padding-left: 20px;
       }
-    
+    }
+    p {
+      color: $color-neutral;
+      font-size: 13px;
+      padding-right: 40px;
+      @include respond(tab-land) {
+        font-size: 10px;
+      }
+      @include respond(mobile) {
+        font-size: 9px;
+        padding-right: 20px;
+      }
+    }
   }
-  .contact{
-      width: 60%;
-      background: $color-dark;
-      border-radius: 3px;
-      height: 270px;
-      position: absolute;
-      top: calc(270/2) * -1px;
-      margin: 0 auto;
-      display: grid;
-      place-items: center;
-      div{
-          width: 80%;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          p {
-              @include font;
-              width: 60%;
-              font-size: 40px;
-              line-height: 50px;
-              color: #fff;
-          }
-          button{
-              @include btn-style2;
-              width: 140px;
-              &:hover{
-                  @include btnHover(transparent, #fff, $color-primary);
-              }
-          }
+  .contact {
+    width: 60%;
+    background: $color-dark;
+    border-radius: 3px;
+    height: 270px;
+    position: absolute;
+    top: calc(270 / 2) * -1px;
+    margin: 0 auto;
+    display: grid;
+    place-items: center;
+    @include respond(desktop) {
+      width: 65%;
+    }
+    @include respond(tab-land) {
+      width: 100%;
+      border-radius: 0;
+    }
+    div {
+      width: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @include respond(tab-port) {
+        display: block;
+        width: 100%;
+        text-align: center;
       }
+
+      p {
+        @include font;
+        width: 60%;
+        font-size: 40px;
+        line-height: 50px;
+        color: #fff;
+        @include respond(desktop) {
+          font-size: 30px;
+        }
+        @include respond(tab-port) {
+          margin: 0 auto 20px;
+          line-height: 40px;
+        }
+        @include respond(mobile) {
+          font-size: 25px;
+          width: 80%;
+        }
+      }
+      button {
+        @include btn-style2;
+        width: 140px;
+        &:hover {
+          @include btnHover(transparent, #fff, $color-primary);
+        }
+      }
+    }
+  }
+}
+
+// menu
+.menu {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  top: 0;
+  display: grid;
+  place-items: center;
+  right: -9000px;
+  transition: right ease-in-out 0.4s;
+
+  .nav-container {
+    position: absolute;
+    width: 100%;
+    top: 0;
+  }
+  .menu-nav {
+    padding: 20px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    margin: 0 auto;
+    .menu-logo {
+      width: 75px;
+    }
+    button {
+      width: 30px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    &-links {
+      text-align: center;
+      li {
+        position: relative;
+        a {
+          &::after {
+            @include pseudo;
+          }
+          &:hover::after {
+            width: 100%;
+          }
+        }
+        &:not(:first-child) {
+          margin-top: 20px;
+          a {
+            color: $color-neutral;
+          }
+        }
+      }
+    }
+    &-buttons {
+      position: absolute;
+      bottom: 100px;
+      .menu-log-in {
+        @include btn-style1;
+
+        &:hover {
+          @include btnHover($color-primary, #fff, $color-primary);
+        }
+      }
+      .menu-sign-up {
+        @include btn-style2;
+        margin-left: 16px;
+        &:hover {
+          @include btnHover(#fff, $color-primary, $color-primary);
+        }
+      }
+    }
+  }
+}
+
+
+
+@media (max-width: 600px) {
+  .feature-section .switch {
+    flex-direction: column-reverse;
   }
 }
